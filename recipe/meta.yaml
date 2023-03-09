@@ -28,12 +28,8 @@ requirements:
     - boost-cpp >=1.73.0,<2.0a0
 
 test:
-  source_files:
-    - test-suite
   commands:
     - quantlib-test-suite --log_level=message  # [win]
-    - ls test-suite  # [unix]
-    - cd test-suite && quantlib-test-suite --log_level=message  # [unix]
 
 about:
   home: https://www.quantlib.org/

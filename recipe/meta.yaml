@@ -29,11 +29,11 @@ requirements:
 
 test:
   source_files:
-    - test-suite  # [linux and (s390x or aarch64)]
+    - test-suite
   commands:
     - quantlib-test-suite --log_level=message  # [win]
-    - ls  # [linux and (s390x or aarch64)]
-    - ./test-suite/quantlib-test-suite --log_level=message  # [linux and (s390x or aarch64)]
+    - ls test-suite  # [unix]
+    - cd test-suite && quantlib-test-suite --log_level=message  # [unix]
 
 about:
   home: https://www.quantlib.org/

@@ -23,13 +23,17 @@ requirements:
     - cmake
     - ninja-base
   host:
-    - boost-cpp
+    - boost-cpp 1.73.0
   run:
-    - boost-cpp
+    - boost-cpp >=1.73.0,<2.0a0
 
 test:
+  source_files:
+    - test-suite  # [linux and (s390x or aarch64)]
   commands:
     - quantlib-test-suite --log_level=message  # [win]
+    - ls  # [linux and (s390x or aarch64)]
+    - ./test-suite/quantlib-test-suite --log_level=message  # [linux and (s390x or aarch64)]
 
 about:
   home: https://www.quantlib.org/

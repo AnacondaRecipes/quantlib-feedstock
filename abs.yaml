@@ -1,8 +1,10 @@
-
 aggregate_check: false
 
 #upload_channels:
 #  - sfe1ed40
-
 #channels:
 #  - sfe1ed40
+#channel_targets:
+#  - sfe1ed40
+#build_parameters:
+#  - ""

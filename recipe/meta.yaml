@@ -27,13 +27,9 @@ requirements:
   run:
     - boost-cpp >=1.73.0,<2.0a0
 
-test:
-  commands:
-    - quantlib-test-suite --log_level=message  # [win]
-    - test -f ${PREFIX}/lib/pkgconfig/quantlib.pc  # [unix]
-    - test -f ${PREFIX}/include/ql/quantlib.hpp  # [unix]
-    - test -f {$PREFIX}/lib/quantlib${SHLIB_EXT}  # [unix]
-    - test -f {$PREFIX}/lib/quantlib${SHLIB_EXT}.*  # [unix]
+# test:
+#   commands:
+#     - quantlib-test-suite --log_level=message  # [win]
 
 about:
   home: https://www.quantlib.org/

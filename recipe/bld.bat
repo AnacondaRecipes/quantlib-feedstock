@@ -8,14 +8,14 @@ if errorlevel 1 exit /b 1
 
 :: Generate the build files.
 echo "Generating the build files..."
+:: According to upstream https://github.com/lballabio/QuantLib/issues/15522
+:: build_shared_libs is not supported on Windows, so build a static
+:: QuantLib library but use the dynamic runtime so the library can be used
+:: with python.
 cmake -G Ninja ^
     -D CMAKE_BUILD_TYPE=Release ^
     -D CMAKE_MSVC_RUNTIME_LIBRARY=MultiThreadedDLL  ^
     -D CMAKE_INSTALL_PREFIX=%LIBRARY_PREFIX%  ^
-    :: According to upstream https://github.com/lballabio/QuantLib/issues/15522
-    :: build_shared_libs is not supported on Windows, so build a static
-    :: QuantLib library but use the dynamic runtime so the library can be used
-    :: with python.
     -D BUILD_SHARED_LIBS=OFF  ^
     -D Boost_USE_STATIC_LIBS=OFF  ^
     -D Boost_USE_STATIC_RUNTIME=OFF  ^

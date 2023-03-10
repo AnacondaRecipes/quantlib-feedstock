@@ -5,7 +5,7 @@ echo "Building ${PKG_NAME}."
 mkdir -p build
 cd build || exit 1
 
-export CXXFLAGS="${CXXFLAGS} -O2 -g0 -Wall -Wno-unknown-pragmas -Werror"
+export CXXFLAGS="${CXXFLAGS} -O2 -g0 -fno-fast-math -Wall -Wno-unknown-pragmas -Werror"
 
 cmake .. ${CMAKE_ARGS} \
     -GNinja \

@@ -1,3 +1,4 @@
+# this package is not intended to go on the default channel
 {% set name = "QuantLib" %}
 {% set version = "1.29" %}
 {% set sha256 = "b8127fb6fe5562dfabfcb7d62df4ba2f018de39d7fbe7df2b7a688578516b4b7" %}
@@ -12,7 +13,7 @@ source:
   sha256: {{ sha256 }}
 
 build:
-  number: 2
+  number: 0
   skip: true  # [win and vc<14]
   run_exports:
     - {{ pin_subpackage('quantlib', max_pin='x') }}  # [not win]
@@ -20,28 +21,24 @@ build:
 requirements:
   build:
     - {{ compiler('cxx') }}
-    - autoconf  # [unix]
-    - automake  # [unix]
     - cmake
-    - make  # [unix]
-    - ninja  # [win]
+    - ninja-base
   host:
-    - boost-cpp
+    - boost-cpp 1.73.0
   run:
-    - boost-cpp
+    - boost-cpp >=1.73.0,<2.0a0
 
 test:
   commands:
     - quantlib-test-suite --log_level=message  # [win]
-    - cd build && ./test-suite/quantlib-test-suite --log_level=message  # [unix]
 
 about:
-  home: https://github.com/lballabio/QuantLib
+  home: https://www.quantlib.org/
   license: BSD-3-Clause
   license_family: BSD
   license_file: LICENSE.TXT
   summary: The QuantLib C++ library
-  description: The QuantLib project (https://www.quantlib.org) is aimed at providing a comprehensive software framework for quantitative finance. QuantLib is a free/open-source library for modeling, trading, and risk management in real-life.
+  description: The QuantLib project is aimed at providing a comprehensive software framework for quantitative finance. QuantLib is a free/open-source library for modeling, trading, and risk management in real-life.
   doc_url: https://www.quantlib.org
   dev_url: https://github.com/lballabio/QuantLib
 

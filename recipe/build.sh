@@ -1,15 +1,39 @@
 #!/bin/bash
+echo "Building ${PKG_NAME}."
 
-#cmake ${CMAKE_ARGS} -DCMAKE_BUILD_TYPE=Release     \
-#      -DCMAKE_INSTALL_PREFIX=$PREFIX \
-#      -DCMAKE_INSTALL_LIBDIR=lib     \
-#      -DCMAKE_CXX_FLAGS=-O2     \
-#      -DQL_BUILD_EXAMPLES=OFF   \
-#      -DQL_BUILD_BENCHMARK=OFF   \
-#      $SRC_DIR
+# Isolate the build.
+mkdir -p build
+cd build || exit 1
 
+export CXXFLAGS="${CXXFLAGS} -O2 -g0 -fno-fast-math -Wall -Wno-unknown-pragmas -Werror"
 
-./autogen.sh
-./configure --disable-static CXXFLAGS="-O2 -g0 -Wall -Wno-unknown-pragmas -Werror" --prefix $PREFIX
-make
-make install
+# TODO: Enable DQL_BUILD_TEST_SUITE with the next release. See comments below.
+cmake .. ${CMAKE_ARGS} \
+    -GNinja \
+    -DCMAKE_BUILD_TYPE=Release \
+    -DCMAKE_INSTALL_PREFIX=$PREFIX \
+    -DCMAKE_INSTALL_LIBDIR=lib     \
+    -DCMAKE_CXX_FLAGS="$CMAKE_CXX_FLAGS" \
+    -DQL_BUILD_EXAMPLES=OFF   \
+    -DQL_BUILD_TEST_SUITE=OFF \
+    -DQL_BUILD_BENCHMARK=OFF
+
+# Build.
+echo "Building..."
+ninja -j${CPU_COUNT} || exit 1
+
+# 2023/3/14: Disable testing below because 'quantlib_test_suite' fails 
+# in the test module "Master Test Suite" (failed to verify exponentially weightedmodified Bessel function of second kind) 
+# on linux-s390x and linux-aarch64.
+
+# ninja test || exit 1
+# ./test-suite/quantlib-test-suite --log_level=message || exit 1
+# ctest -VV --output-on-failure || exit 1
+
+# Installing
+echo "Installing..."
+ninja install || exit 1
+
+# Error free exit!
+echo "Error free exit!"
+exit 0

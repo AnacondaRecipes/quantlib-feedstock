@@ -22,11 +22,10 @@ cmake .. ${CMAKE_ARGS} \
 echo "Building..."
 ninja -j${CPU_COUNT} || exit 1
 
-# Perform tests.
-#echo "Testing..."
-# quantlib_test_suite fails on linux-s390x and linux-aarch64:
-# s390x: 24 failures are detected in the test module "Master Test Suite".
-# aarch64: 52 failures are detected in the test module "Master Test Suite".
+# 2023/3/14: Disable testing below because 'quantlib_test_suite' fails 
+# in the test module "Master Test Suite" (failed to verify exponentially weightedmodified Bessel function of second kind) 
+# on linux-s390x and linux-aarch64.
+
 # ninja test || exit 1
 # ./test-suite/quantlib-test-suite --log_level=message || exit 1
 # ctest -VV --output-on-failure || exit 1

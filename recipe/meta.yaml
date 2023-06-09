@@ -21,8 +21,11 @@ build:
 requirements:
   build:
     - {{ compiler('cxx') }}
+    - autoconf  # [unix]
+    - automake  # [unix]
     - cmake
-    - ninja-base
+    - make  # [unix]
+    - ninja-base  # [win]
   host:
     - boost-cpp 1.73.0
   run:

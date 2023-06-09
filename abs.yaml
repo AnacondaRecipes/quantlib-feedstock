@@ -1,7 +1,7 @@
 upload_channels:
-  - sfe1ed40
+  - ak_test
 channels:
-  - sfe1ed40
+  - ak_test
 #channel_targets:
 #  - sfe1ed40
 #build_parameters:

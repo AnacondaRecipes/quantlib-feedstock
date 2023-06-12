@@ -34,6 +34,7 @@ requirements:
 test:
   commands:
     - quantlib-test-suite --log_level=message  # [win]
+    - quantlib-config --version
 
 about:
   home: https://www.quantlib.org/

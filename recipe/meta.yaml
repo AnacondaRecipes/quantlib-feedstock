@@ -34,7 +34,8 @@ requirements:
 test:
   commands:
     - quantlib-test-suite --log_level=message  # [win]
-    - quantlib-config --version
+    # quantlib-config is built only for unix-like systems
+    - quantlib-config --version  # [not win]
 
 about:
   home: https://www.quantlib.org/

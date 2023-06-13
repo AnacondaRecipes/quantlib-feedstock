@@ -13,7 +13,7 @@ source:
   sha256: {{ sha256 }}
 
 build:
-  number: 0
+  number: 1
   skip: true  # [win and vc<14]
   run_exports:
     - {{ pin_subpackage('quantlib', max_pin='x') }}  # [not win]
@@ -21,8 +21,11 @@ build:
 requirements:
   build:
     - {{ compiler('cxx') }}
+    - autoconf  # [unix]
+    - automake  # [unix]
     - cmake
-    - ninja-base
+    - make  # [unix]
+    - ninja-base  # [win]
   host:
     - boost-cpp 1.73.0
   run:
@@ -31,6 +34,8 @@ requirements:
 test:
   commands:
     - quantlib-test-suite --log_level=message  # [win]
+    # quantlib-config is built only for unix-like systems
+    - quantlib-config --version  # [not win]
 
 about:
   home: https://www.quantlib.org/

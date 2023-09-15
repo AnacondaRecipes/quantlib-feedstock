@@ -48,5 +48,9 @@ about:
   dev_url: https://github.com/lballabio/QuantLib
 
 extra:
-  recipe-maintainers:
-    - timkpaine
+  anaconda-services:
+    ref:  https://anaconda.zendesk.com/agent/tickets/38602
+    reason: "needed by Reinsurance Group"
+    recipe-maintainers:
+      - ianaobi
+      - timkpaine

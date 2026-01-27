@@ -18,6 +18,19 @@ build:
   run_exports:
     - {{ pin_subpackage('quantlib', max_pin='x') }}  # [not win]
 
+#requirements:
+#  build:
+#    - {{ compiler('cxx') }}
+#    - autoconf  # [unix]
+#    - automake  # [unix]
+#    - cmake
+#    - make  # [unix]
+#    - ninja-base  # [win]
+#  host:
+#    - boost-cpp 1.73.0
+#  run:
+#    - boost-cpp >=1.73.0,<2.0a0
+
 requirements:
   build:
     - {{ compiler('cxx') }}
@@ -26,10 +39,16 @@ requirements:
     - cmake
     - make  # [unix]
     - ninja-base  # [win]
+
   host:
     - boost-cpp 1.73.0
+    - zlib
+    - bzip2
+    - libgomp  # [linux]
+
   run:
     - boost-cpp >=1.73.0,<2.0a0
+    - libgomp  # [linux]
 
 test:
   commands:

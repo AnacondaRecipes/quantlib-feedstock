@@ -48,5 +48,13 @@ about:
   dev_url: https://github.com/lballabio/QuantLib
 
 extra:
+  skip-lints:
+    - host_section_needs_exact_pinnings
+    - avoid_noarch
+  anaconda-services:
+    ref: https://anaconda.zendesk.com/agent/tickets/80856
+    reason: Client request
+  recipe-maintainers:
+    - ianaobi
   recipe-maintainers:
     - timkpaine

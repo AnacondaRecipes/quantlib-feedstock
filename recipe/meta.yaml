@@ -56,5 +56,4 @@ extra:
     reason: Client request
   recipe-maintainers:
     - ianaobi
-  recipe-maintainers:
     - timkpaine

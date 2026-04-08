@@ -40,6 +40,9 @@ test:
     - quantlib-test-suite --log_level=message  # [win]
     # quantlib-config is built only for unix-like systems
     - quantlib-config --version  # [not win]
+    - quantlib-config --libs  # [not win]
+    - test -f $PREFIX/lib/libQuantLib${SHLIB_EXT}  # [unix]
+    - test -f $PREFIX/include/ql/quantlib.hpp  # [unix]
 
 about:
   home: https://www.quantlib.org/

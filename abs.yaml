@@ -1,8 +1,12 @@
-#upload_channels:
-#  - sfe1ed40
-#channels:
-#  - sfe1ed40
-#channel_targets:
-#  - sfe1ed40
-#build_parameters:
-#  - ""
+aggregate_check: false
+
+upload_without_merge: true
+
+content_signing: {'win-64': False}
+#mark_private: True
+
+upload_channels:
+  - services
+
+channels:
+  - services

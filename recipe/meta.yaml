@@ -30,6 +30,7 @@ requirements:
     - cmake
     - make  # [unix]
     - ninja-base  # [win]
+    - {{ stdlib('c') }}
   host:
     # libboost-devel has run_exports that auto-pin libboost on the downstream,
     # so we don't need to list libboost in `run:` explicitly.
@@ -55,5 +56,13 @@ about:
   dev_url: https://github.com/lballabio/QuantLib
 
 extra:
+  skip-lints:
+    - host_section_needs_exact_pinnings
+    - avoid_noarch
+  anaconda-services:
+    ref: https://anaconda.zendesk.com/agent/tickets/80856
+    reason: Client request
   recipe-maintainers:
+    - ianaobi
     - timkpaine
+    - bkreider

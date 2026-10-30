@@ -1,3 +1,12 @@
+From d1fcd34f5d39544a5271c6db5777179022b0a2a7 Mon Sep 17 00:00:00 2001
+From: Eric Lundby <elundby@anaconda.com>
+Date: Fri, 30 Oct 2026 10:04:14 -0600
+Subject: [PATCH] Zero-initialize finite-difference weight workspace
+
+---
+ .../finitedifferences/operators/numericaldifferentiation.cpp    | 2 ++
+ 1 file changed, 2 insertions(+)
+
 diff --git a/ql/methods/finitedifferences/operators/numericaldifferentiation.cpp b/ql/methods/finitedifferences/operators/numericaldifferentiation.cpp
 index d4ecbd3..6f697f4 100644
 --- a/ql/methods/finitedifferences/operators/numericaldifferentiation.cpp
@@ -18,3 +27,6 @@ index d4ecbd3..6f697f4 100644
              d[0][0][0] = 1.0;
              Real c1 = 1.0;
  
+-- 
+2.50.1 (Apple Git-155)
+

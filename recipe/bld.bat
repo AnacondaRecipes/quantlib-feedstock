@@ -22,6 +22,7 @@ cmake -G Ninja ^
     -D QL_BUILD_EXAMPLES=OFF  ^
     -D QL_BUILD_TEST_SUITE=ON  ^
     -D QL_BUILD_BENCHMARK=OFF  ^
+    -D CMAKE_CXX_FLAGS="/fp:precise" ^
     %SRC_DIR%
 if errorlevel 1 exit /b 1
 

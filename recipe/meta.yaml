@@ -15,10 +15,6 @@ source:
     # which forces auto-linking against versioned boost shared libs that don't
     # exist under that name in libboost-devel. We only need the header-only parts.
     - patches/0001-Remove-use-of-BOOST_ALL_DYN_LINK.patch  # [win]
-    # Fornberg's calcWeights reads boost::multi_array elements it never wrote
-    # (d[m][n-1][nu] with m == n); multi_array does not zero-initialize, so the
-    # result depends on heap contents (seen failing on win-arm64).
-    - patches/0002-Zero-initialize-multi_array-in-calcWeights.patch  # [win and arm64]
 
 build:
   number: 1

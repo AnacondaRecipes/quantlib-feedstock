@@ -12,6 +12,7 @@ echo "Generating the build files..."
 :: build_shared_libs is not supported on Windows, so build a static
 :: QuantLib library but use the dynamic runtime so the library can be used
 :: with python.
+set "CXXFLAGS=%CXXFLAGS% /fp:precise"
 cmake -G Ninja ^
     -D CMAKE_BUILD_TYPE=Release ^
     -D CMAKE_MSVC_RUNTIME_LIBRARY=MultiThreadedDLL  ^

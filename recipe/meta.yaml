@@ -17,13 +17,14 @@ source:
     - patches/0001-Remove-use-of-BOOST_ALL_DYN_LINK.patch  # [win]
 
 build:
-  number: 0
+  number: 1
   skip: true  # [win and vc<14]
   run_exports:
     - {{ pin_subpackage('quantlib', max_pin='x') }}  # [not win]
 
 requirements:
   build:
+    - {{ stdlib('c') }}
     - {{ compiler('cxx') }}
     - autoconf  # [unix]
     - automake  # [unix]
